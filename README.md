@@ -6,6 +6,6 @@ Parallel multilingual corpora, in this case versions of the UN Universal Declara
 
 A candidate for language detection is then appended to each "fingerprint". The resulting object is compressed and the size of the compressed artefact is noted.
 
-Language detection is then a function of the least difference between corresponding pairs of compressed artefacts comp(fingerprint(language_i) + candidate) and comp(fingerprint(language_i).
+Language detection is then a function of the least difference between corresponding pairs of compressed artefacts comp(fingerprint(language<sub>1</sub>...<sub>n</sub>) + candidate) and comp(fingerprint(language<sub>1</sub>...<sub>n</sub>).
 
 <i>Note:</i> The current implementation only supports detection of German and English.
