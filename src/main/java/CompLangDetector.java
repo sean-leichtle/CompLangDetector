@@ -60,8 +60,8 @@ public class CompLangDetector {
     public static String detect(String candidate) {
         String result = null;
         try {
-            String fingerprintDE = readFingerprint("src/main/java/org/jabref/logic/formatter/detector/fingerprint_de.txt");
-            String fingerprintEN = readFingerprint("src/main/java/org/jabref/logic/formatter/detector/fingerprint_en.txt");
+            String fingerprintDE = readFingerprint("src/main/resources/fingerprint_de.txt");
+            String fingerprintEN = readFingerprint("src/main/resources/fingerprint_en.txt");
 
             int candidateDE = getDeflatedLength(fingerprintDE + candidate) - getDeflatedLength(fingerprintDE);
             int candidateEN = getDeflatedLength(fingerprintEN + candidate) - getDeflatedLength(fingerprintEN);
