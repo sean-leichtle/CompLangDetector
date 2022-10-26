@@ -17,4 +17,6 @@ Object-oriented refactor
 
 ## 1.1.0: 26-10-2022
 
-- Add functionality for Dutch, French and Spanish.
+### Added
+
+- Functionality for Dutch, French and Spanish.
