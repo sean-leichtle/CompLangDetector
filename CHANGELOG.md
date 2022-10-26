@@ -7,10 +7,14 @@ Note that this project adheres loosely to [Semantic Versioning](http://semver.or
 
 ## Unreleased
 
---
+Object-oriented refactor
 
 ## 1.0.0: 20-09-2022
 
 ### Added
 
-- Initial commit.
+- Initial commit with functionality for English and German.
+
+## 1.1.0: 26-10-2022
+
+- Add functionality for Dutch, French and Spanish.

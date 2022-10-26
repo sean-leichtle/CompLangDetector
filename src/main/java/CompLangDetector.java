@@ -2,6 +2,9 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.zip.Deflater;
 
 /**
@@ -51,30 +54,52 @@ public class CompLangDetector {
      * Detects language as a function of the least difference
      * between pairs of compressed artefacts [fingerprint(LANGUAGE) + candidate]
      * and [fingerprint]. Note that at least two language fingerprints
-     * must be employed and that the candidate text should include
-     * more than one word for reliable detection
+     * must be employed and that the candidate text should be of sentence
+     * length or longer for reliable detection
      *
      * @param candidate text the language of which is to be determined
      * @return language detected
      */
     public static String detect(String candidate) {
+        Map<String, Integer> map = new TreeMap<>();
         String result = null;
         try {
             String fingerprintDE = readFingerprint("src/main/resources/fingerprint_de.txt");
             String fingerprintEN = readFingerprint("src/main/resources/fingerprint_en.txt");
+            String fingerprintES = readFingerprint("src/main/resources/fingerprint_es.txt");
+            String fingerprintFR = readFingerprint("src/main/resources/fingerprint_fr.txt");
+            String fingerprintNL = readFingerprint("src/main/resources/fingerprint_nl.txt");
 
             int candidateDE = getDeflatedLength(fingerprintDE + candidate) - getDeflatedLength(fingerprintDE);
             int candidateEN = getDeflatedLength(fingerprintEN + candidate) - getDeflatedLength(fingerprintEN);
+            int candidateES = getDeflatedLength(fingerprintES + candidate) - getDeflatedLength(fingerprintES);
+            int candidateFR = getDeflatedLength(fingerprintFR + candidate) - getDeflatedLength(fingerprintFR);
+            int candidateNL = getDeflatedLength(fingerprintNL + candidate) - getDeflatedLength(fingerprintNL);
 
-            if (candidateDE < candidateEN) {
-                result = "DE";
-            } else {
-                result = "EN";
-            }
+            map.put("de", candidateDE);
+            map.put("en", candidateEN);
+            map.put("es", candidateES);
+            map.put("fr", candidateFR);
+            map.put("nl", candidateNL);
+
+            result = map.keySet()
+                        .stream()
+                        .min(Comparator.comparing(map::get))
+                        .orElse(null);
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         return result;
+    }
+
+    /**
+     * Rudimentary CLI
+     * 
+     * @param args command line input - for input
+     *             longer than one word, use "..."
+     */
+    public static void main(String[] args) {
+        System.out.println(detect(args[0]));
     }
 }
