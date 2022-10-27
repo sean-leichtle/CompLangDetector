@@ -105,7 +105,7 @@ public class CompLangDetector {
     }
 
     /**
-     * Rudimentary CLI
+     * Rudimentary CLI for testing purposes
      * 
      * @param args command line input - for input
      *             longer than one word, use "..."
