@@ -18,7 +18,7 @@ public class LangDetectorTest {
 
     /**
      * Strings of approximately 200 words to test the functionality
-     * of the LanguageDetector class
+     * of the CompLangDetector class
      *
      * Following texts generated with the tool
      * {@see <a href=https://www.blindtextgenerator.com/>
