@@ -11,5 +11,5 @@ Language detection is then a function of the least difference between correspond
 <i>Note:</i> The current implementation only supports detection of English, Dutch, French, German and Spanish. Given that it employs a compression algorithm, CompLangDetector cannot reliably detect the language of shorter texts.
 
 [^1]: BENEDETTO, Dario; CAGLIOTI, Emanuele; LORETO, Vittorio. Language trees and zipping. Physical Review Letters, 2002, 88. Jg., Nr. 4, S. 048702. (DOI: https://doi.org/10.1103/PhysRevLett.88.048702)
-[^2]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/package-summary.html
+[^2]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/Deflater.html
 [^3]: https://www.ohchr.org/en/human-rights/universal-declaration/universal-declaration-human-rights/about-universal-declaration-human-rights-translation-project
