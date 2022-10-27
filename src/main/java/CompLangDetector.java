@@ -26,7 +26,13 @@ public class CompLangDetector {
      *          are interrupted
      */
     public static String readFingerprint(String input) throws IOException {
-        return Files.readString(Path.of(input));
+        String result = null;
+        try {
+            result = Files.readString(Path.of(input));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return result;
     }
 
     /**
@@ -37,16 +43,21 @@ public class CompLangDetector {
      * @throws UnsupportedEncodingException
      */
     public static int getDeflatedLength(String inputString) throws UnsupportedEncodingException {
-        byte[] input = inputString.getBytes("UTF-8");
-        byte[] output = new byte[10000];
+        int deflatedLength = Integer.MAX_VALUE;
+        try {
+            byte[] input = inputString.getBytes("UTF-8");
+            byte[] output = new byte[10000];
 
-        Deflater deflater = new Deflater();
-        deflater.setInput(input);
+            Deflater deflater = new Deflater();
+            deflater.setInput(input);
 
-        deflater.finish();
-        int deflatedLength = deflater.deflate(output);
-        deflater.end();
+            deflater.finish();
+            deflatedLength = deflater.deflate(output);
+            deflater.end();
 
+        } catch (UnsupportedEncodingException ex) {
+            ex.printStackTrace();
+        }
         return deflatedLength;
     }
 
