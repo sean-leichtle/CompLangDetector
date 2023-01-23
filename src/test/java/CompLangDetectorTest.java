@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+import main.java.CompLangDetector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  *   Test class for the CompLangDetector language detection class
  */
-public class LangDetectorTest {
+public class CompLangDetectorTest {
 
     private static String candidate1a;
     private static String candidate1b;
@@ -34,25 +35,25 @@ public class LangDetectorTest {
 
     @Test
     public void readFingerprintTest() throws IOException {
-        assertEquals(candidate1a, LangDetector.readFingerprint("src/test/java/org/jabref/logic/formatter/detector/candidate1a.txt"));
-        assertEquals(candidate1b, LangDetector.readFingerprint("src/test/java/org/jabref/logic/formatter/detector/candidate1b.txt"));
-        assertEquals(candidate2a, LangDetector.readFingerprint("src/test/java/org/jabref/logic/formatter/detector/candidate2a.txt"));
-        assertEquals(candidate2b, LangDetector.readFingerprint("src/test/java/org/jabref/logic/formatter/detector/candidate2b.txt"));
+        assertEquals(candidate1a, CompLangDetector.readFingerprint("src/test/resources/candidate1a.txt"));
+        assertEquals(candidate1b, CompLangDetector.readFingerprint("src/test/resources/candidate1b.txt"));
+        assertEquals(candidate2a, CompLangDetector.readFingerprint("src/test/resources/candidate2a.txt"));
+        assertEquals(candidate2b, CompLangDetector.readFingerprint("src/test/resources/candidate2b.txt"));
     }
 
     @Test
     public void getDeflatedLengthTest() throws UnsupportedEncodingException {
-        assertEquals(367, LangDetector.getDeflatedLength(candidate1a));
-        assertEquals(711, LangDetector.getDeflatedLength(candidate1b));
-        assertEquals(441, LangDetector.getDeflatedLength(candidate2a));
-        assertEquals(636, LangDetector.getDeflatedLength(candidate2b));
+        assertEquals(367, CompLangDetector.getDeflatedLength(candidate1a));
+        assertEquals(711, CompLangDetector.getDeflatedLength(candidate1b));
+        assertEquals(441, CompLangDetector.getDeflatedLength(candidate2a));
+        assertEquals(636, CompLangDetector.getDeflatedLength(candidate2b));
     }
 
     @Test
     public void detectTest() {
-        assertEquals("DE", LangDetector.detect(candidate1a));
-        assertEquals("DE", LangDetector.detect(candidate1b));
-        assertEquals("EN", LangDetector.detect(candidate2a));
-        assertEquals("EN", LangDetector.detect(candidate2b));
+        assertEquals("de", CompLangDetector.detect(candidate1a));
+        assertEquals("de", CompLangDetector.detect(candidate1b));
+        assertEquals("en", CompLangDetector.detect(candidate2a));
+        assertEquals("en", CompLangDetector.detect(candidate2b));
     }
 }

@@ -8,7 +8,7 @@ A candidate for language detection is then appended to each "fingerprint". The r
 
 Language detection is then a function of the least difference between corresponding pairs of compressed artefacts ***comp(fingerprint(language<sub>1</sub>...<sub>n</sub>) + candidate)*** and ***comp(fingerprint(language<sub>1</sub>...<sub>n</sub>))***.
 
-<i>Note:</i> The current implementation only supports detection of English, Dutch, French, German and Spanish. Given that it employs a compression algorithm, CompLangDetector cannot reliably detect the language of shorter texts.
+<i>Note:</i> The current implementation only supports detection of English, Dutch, French, German and Spanish. Given that it employs a compression algorithm, CompLangDetector cannot currently reliably detect the language of shorter texts. N-gram-based profiling to increase reliability is planned.
 
 [^1]: BENEDETTO, Dario; CAGLIOTI, Emanuele; LORETO, Vittorio. Language trees and zipping. Physical Review Letters, 2002, 88. Jg., Nr. 4, S. 048702. (DOI: https://doi.org/10.1103/PhysRevLett.88.048702)
 [^2]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/Deflater.html

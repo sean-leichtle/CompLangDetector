@@ -1,3 +1,5 @@
+package main.java;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
@@ -13,7 +15,6 @@ import java.util.zip.Deflater;
  * compressed artefact against which to compare compression ratios relative to candidate texts for
  * language detection.
  * {@see <a href="https://rb.gy/gor63r">Universal Declaration of Human Rights Translation Project</a>}
- *
  */
 public class CompLangDetector {
 
@@ -63,10 +64,10 @@ public class CompLangDetector {
 
     /**
      * Detects language as a function of the least difference
-     * between pairs of compressed artefacts [fingerprint(LANGUAGE) + candidate]
-     * and [fingerprint]. Note that at least two language fingerprints
-     * must be employed and that the candidate text should be of sentence
-     * length or longer for reliable detection
+     * between pairs of compressed artefacts [fingerprint(LANGUAGE)]
+     * and [fingerprint(LANGUAGE) + candidate]. Note that at least two
+     * language fingerprints must be employed and that the candidate
+     * text should be of sentence length or longer for reliable detection
      *
      * @param candidate text the language of which is to be determined
      * @return language detected

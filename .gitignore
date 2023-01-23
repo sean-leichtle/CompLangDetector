@@ -23,7 +23,14 @@
 hs_err_pid*
 replay_pid*
 
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+*.iml
+
 # macOS
 .DS_Store
 
 # other
+/.gradle/
+/out/
