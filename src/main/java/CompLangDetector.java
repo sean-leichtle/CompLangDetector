@@ -2,6 +2,7 @@ package main.java;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -43,22 +44,18 @@ public class CompLangDetector {
      * @return int length of compressed String
      * @throws UnsupportedEncodingException
      */
-    public static int getDeflatedLength(String inputString) throws UnsupportedEncodingException {
+    public static int getDeflatedLength(String inputString) {
         int deflatedLength = Integer.MAX_VALUE;
-        try {
-            byte[] input = inputString.getBytes("UTF-8");
-            byte[] output = new byte[10000];
+        byte[] input = inputString.getBytes(StandardCharsets.UTF_8);
+        byte[] output = new byte[10000];
 
-            Deflater deflater = new Deflater();
-            deflater.setInput(input);
+        Deflater deflater = new Deflater(Deflater.BEST_COMPRESSION);
+        deflater.setInput(input);
 
-            deflater.finish();
-            deflatedLength = deflater.deflate(output);
-            deflater.end();
+        deflater.finish();
+        deflatedLength = deflater.deflate(output);
+        deflater.end();
 
-        } catch (UnsupportedEncodingException ex) {
-            ex.printStackTrace();
-        }
         return deflatedLength;
     }
 
